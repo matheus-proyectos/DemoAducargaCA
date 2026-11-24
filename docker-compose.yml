@@ -1,0 +1,29 @@
+services:
+  aducarga:
+    image: aducarga:latest
+    container_name: aducarga
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
+      - CRON_SECRET=${CRON_SECRET}
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - NOTIFY_WEBHOOK_URL=${NOTIFY_WEBHOOK_URL}
+      - NOTIFY_WEBHOOK_SECRET=${NOTIFY_WEBHOOK_SECRET}
+      - DATA_DIR=${DATA_DIR}
+    volumes:
+      - aducarga_data:/app/.data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  aducarga_data:

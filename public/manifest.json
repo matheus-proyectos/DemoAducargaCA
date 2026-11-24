@@ -1,0 +1,27 @@
+{
+  "name": "ADUCARGA - Rastreo de envíos a Venezuela",
+  "short_name": "ADUCARGA",
+  "description": "Rastrea tu paquete desde nuestro casillero internacional hasta la puerta de tu casa en Venezuela",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0C2C52",
+  "background_color": "#E8EFF7",
+  "icons": [
+    {
+      "src": "/brand/logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
